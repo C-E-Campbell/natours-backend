@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+
 const getAllUsers = (req, res, next) => {
   res
     .status(500)
@@ -25,6 +26,7 @@ const deleteUser = (req, res, next) => {
     .status(500)
     .json({ status: 'Error', message: 'This route is not yet defined' });
 };
+
 router
   .route('/')
   .get(getAllUsers)
@@ -35,3 +37,5 @@ router
   .get(getUser)
   .patch(updateUser)
   .delete(deleteUser);
+
+module.exports = router;

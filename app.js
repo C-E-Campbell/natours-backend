@@ -1,4 +1,4 @@
-const fs = require('fs');
+
 const express = require('express');
 const app = express();
 const morgan = require('morgan');
@@ -7,9 +7,7 @@ const userRouter = require('./routes/userRoutes');
 app.use(morgan('dev'));
 app.use(express.json());
 
-const tours = JSON.parse(
-  fs.readFileSync(`${__dirname}/dev-data/data/tours-simple.json`)
-);
+
 
 app.use('/api/v1/tours', tourRouter);
 app.use('/api/v1/users', userRouter);
