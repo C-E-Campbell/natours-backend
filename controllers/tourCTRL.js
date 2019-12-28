@@ -4,6 +4,16 @@ const tours = JSON.parse(
 );
 
 module.exports = {
+  //this one is middleware
+  checkID: (req, res, next, val) => {
+    if (req.params.id * 1 > tours.length) {
+      return res.status(404).json({
+        status: 'fail',
+        message: 'Invalid ID'
+      });
+    }
+    next();
+  },
   getAllTours: (req, res) => {
     res.status(200).json({
       status: 'success',
@@ -14,14 +24,7 @@ module.exports = {
   getTour: (req, res) => {
     const { id } = req.params;
     const tour = tours.find(el => el.id === Number(id));
-
-    if (!tour) {
-      res
-        .status(404)
-        .json({ status: 'failed', data: 'No tour with that id was found.' });
-    } else {
-      res.status(200).json({ status: 'success', data: tour });
-    }
+    res.status(200).json({ status: 'success', data: tour });
   },
   createTour: (req, res) => {
     const newId = tours[tours.length - 1].id + 1;
