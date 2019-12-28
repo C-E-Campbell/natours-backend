@@ -6,12 +6,14 @@ const tours = JSON.parse(
 module.exports = {
   checkTourInfo: (req, res, next) => {
     const { name, price } = req.body;
+
     if (!name || !price) {
       return res.status(400).json({
-        status: 'error',
+        status: 'fail',
         message: 'Must add name and price'
       });
     }
+
     next();
   },
   checkID: (req, res, next, val) => {
