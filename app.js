@@ -10,6 +10,4 @@ app.use(express.json());
 app.use('/api/v1/tours', tourRouter);
 app.use('/api/v1/users', userRouter);
 
-app.listen(5005, () => {
-  console.log('listening on port 5005');
-});
+module.exports = app;
