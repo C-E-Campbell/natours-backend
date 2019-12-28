@@ -4,7 +4,16 @@ const tours = JSON.parse(
 );
 
 module.exports = {
-  //this one is middleware
+  checkTourInfo: (req, res, next) => {
+    const { name, price } = req.body;
+    if (!name || !price) {
+      return res.status(400).json({
+        status: 'error',
+        message: 'Must add name and price'
+      });
+    }
+    next();
+  },
   checkID: (req, res, next, val) => {
     if (req.params.id * 1 > tours.length) {
       return res.status(404).json({

@@ -8,7 +8,8 @@ const {
   createTour,
   updateTour,
   deleteTour,
-  checkID
+  checkID,
+  checkTourInfo
 } = tourCTRL;
 
 router.param('id', checkID);
@@ -16,7 +17,7 @@ router.param('id', checkID);
 router
   .route('/')
   .get(getAllTours)
-  .post(createTour);
+  .post(checkTourInfo, createTour);
 
 router
   .route('/:id')
