@@ -4,7 +4,7 @@ const tours = JSON.parse(
 );
 
 module.exports = {
-  getAllTours: (req, res, next) => {
+  getAllTours: (req, res) => {
     res.status(200).json({
       status: 'success',
       results: tours.length,
