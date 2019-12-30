@@ -3,22 +3,14 @@ const tourCTRL = require('../controllers/tourCTRL');
 
 const router = express.Router();
 
-const {
-  getAllTours,
-  getTour,
-  createTour,
-  updateTour,
-  deleteTour,
-  // checkID,
-  checkTourInfo
-} = tourCTRL;
+const { getAllTours, getTour, createTour, updateTour, deleteTour } = tourCTRL;
 
 // router.param('id', checkID);
 
 router
   .route('/')
   .get(getAllTours)
-  .post(checkTourInfo, createTour);
+  .post(createTour);
 
 router
   .route('/:id')
