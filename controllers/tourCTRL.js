@@ -14,6 +14,7 @@ module.exports = {
     // res.status(200).json({ status: 'success', data: tour });
   },
   createTour: async (req, res) => {
+    console.log('herer');
     try {
       const newTour = await Tour.create(req.body);
       res.status(201).json({

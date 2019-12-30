@@ -15,5 +15,5 @@ mongoose.connect(DB, {
 const { PORT } = process.env;
 
 app.listen(PORT, () => {
-  console.log('listening');
+  console.log(`listening on ${PORT}`);
 });
