@@ -1,4 +1,5 @@
 const fs = require('fs');
+
 const tours = JSON.parse(
   fs.readFileSync(`${__dirname}/../dev-data/data/tours-simple.json`)
 );
@@ -47,7 +48,7 @@ module.exports = {
     fs.writeFile(
       `${__dirname}/dev-data/data/tours-simple.json`,
       JSON.stringify(tours),
-      err => {
+      () => {
         res.status(201).json({
           status: 'success',
           data: {
