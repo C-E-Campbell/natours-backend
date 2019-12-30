@@ -1,6 +1,7 @@
 const express = require('express');
-const router = express.Router();
 const tourCTRL = require('../controllers/tourCTRL');
+
+const router = express.Router();
 
 const {
   getAllTours,
@@ -8,11 +9,11 @@ const {
   createTour,
   updateTour,
   deleteTour,
-  checkID,
+  // checkID,
   checkTourInfo
 } = tourCTRL;
 
-router.param('id', checkID);
+// router.param('id', checkID);
 
 router
   .route('/')
