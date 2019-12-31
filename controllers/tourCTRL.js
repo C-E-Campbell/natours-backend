@@ -48,13 +48,44 @@ module.exports = {
       res.status(400).json({ status: 'fail', message: 'Invalid data sent' });
     }
   },
-  updateTour: (req, res) => {
-    res.status(204).json({
-      status: 'success',
-      data: null
-    });
+  updateTour: async (req, res) => {
+    try {
+      const { id } = req.params;
+      const tour = await Tour.findByIdAndUpdate(id, req.body, {
+        new: true,
+        runValidators: true,
+        setDefaultsOnInsert: true
+      });
+      res.status(200).json({
+        status: 'success',
+        results: tour.length,
+        data: {
+          tour
+        }
+      });
+    } catch (err) {
+      res.status(200).json({
+        status: 'fail',
+        message: err
+      });
+    }
   },
-  deleteTour: (rea, res) => {
-    res.status(204).json({ status: 'success', data: null });
+  deleteTour: async (req, res) => {
+    try {
+      const { id } = req.params;
+      const tour = await Tour.findByIdAndDelete(id);
+      res.status(200).json({
+        status: 'success',
+        results: tour.length,
+        data: {
+          tour
+        }
+      });
+    } catch (err) {
+      res.status(200).json({
+        status: 'fail',
+        message: err
+      });
+    }
   }
 };
