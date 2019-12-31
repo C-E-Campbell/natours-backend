@@ -74,12 +74,10 @@ module.exports = {
     try {
       const { id } = req.params;
       const tour = await Tour.findByIdAndDelete(id);
-      res.status(200).json({
+      res.status(204).json({
         status: 'success',
         results: tour.length,
-        data: {
-          tour
-        }
+        data: null
       });
     } catch (err) {
       res.status(200).json({
