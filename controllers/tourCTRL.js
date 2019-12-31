@@ -35,7 +35,6 @@ module.exports = {
         message: err
       });
     }
-    // res.status(200).json({ status: 'success', data: tour });
   },
   createTour: async (req, res) => {
     try {
